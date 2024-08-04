@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "dash-board-application"
+version = "0.1.0"
+description = "Analytics dash board based on Nord Pool prices and power production during 2022-2023"
+authors = ["main <secret@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.4"
+pandas = "^2.2.2"
+dash = "^2.17.1"
+plotly = "^5.23.0"
+dash-bootstrap-components = "^1.6.0"
+statsmodels = "^0.14.2"
+pydantic-settings = "^2.4.0"
+black = "^24.8.0"
+dash-mantine-components = "^0.12.0"
+dash-bootstrap-templates = "^1.2.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
