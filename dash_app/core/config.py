@@ -4,8 +4,12 @@ from pathlib import Path
 
 
 class DataFiles(BaseSettings):
-    nps_file: Path = Path(__file__).parent.parent / "est_power_production_2022-2023.csv"
-    est_power_prod_file: Path = Path(__file__).parent.parent / "nps_2022_2023.csv"
+    est_power_prod_file: str = str(
+        Path(__file__).parent.parent / "est_power_production_2022-2023.csv",
+    )
+    nps_file: str = str(
+        Path(__file__).parent.parent / "nps_2022_2023.csv",
+    )
 
 
 class Settings(BaseSettings):

@@ -3,6 +3,7 @@ from typing import Tuple
 import warnings
 from dash_app.core.config import settings
 
+
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
 
@@ -22,7 +23,7 @@ class LoadDataframes:
     @classmethod
     def _load_prices(cls):
         nps = pd.read_csv(
-            "/home/main/PycharmProjects1/Dash-board/dash_app/nps_2022_2023.csv"
+            settings.datafiles.nps_file,
         )
         nps["Date"] = pd.date_range(
             start="2021-12-31 22:00",
@@ -41,9 +42,7 @@ class LoadDataframes:
 
     @classmethod
     def _load_production(cls):
-        production_df = pd.read_csv(
-            "/home/main/PycharmProjects1/Dash-board/dash_app/est_power_production_2022-2023.csv"
-        )
+        production_df = pd.read_csv(settings.datafiles.est_power_prod_file)
         # Setting time as datetime64 with local zone
         production_df["Date"] = pd.date_range(
             start="2021-12-31 22:00",

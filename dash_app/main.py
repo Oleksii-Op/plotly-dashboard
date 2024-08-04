@@ -8,13 +8,18 @@ from pages.box_plots.layout import layout as box_plots_layout
 from pages.line_plots_selector.layout import layout as line_plots_selector_layout
 from pages.heatmap.layout import layout as heatmap_layout
 from core.config import settings
+from dash_app.text_data.home_page_text import text as text_home_page_text
+from dash_app.text_data.home_page_text import layout as home_page_layout
 
 app = dash.Dash(
     __name__,
     routing_callback_inputs={
         # The app state is serialised in the URL hash without refreshing the page
         # This URL can be copied and then parsed on page load
-        "state": State("main-url", "hash"),
+        "state": State(
+            "main-url",
+            "hash",
+        ),
     },
     external_stylesheets=[dbc.themes.SPACELAB],
     suppress_callback_exceptions=True,
@@ -44,12 +49,12 @@ CONTENT_STYLE = {
 sidebar = html.Div(
     [
         html.H2(
-            "Sidebar",
+            "Dash Board",
             className="display-4",
         ),
         html.Hr(),
         html.P(
-            "A simple sidebar layout with navigation links",
+            "Navigation",
             className="lead",
         ),
         dbc.Nav(
@@ -57,16 +62,6 @@ sidebar = html.Div(
                 dbc.NavLink(
                     "Home",
                     href="/",
-                    active="exact",
-                ),
-                dbc.NavLink(
-                    "Page 1",
-                    href="/page-1",
-                    active="exact",
-                ),
-                dbc.NavLink(
-                    "Page 2",
-                    href="/page-2",
                     active="exact",
                 ),
                 dbc.NavLink(
@@ -128,11 +123,7 @@ app.layout = html.Div(
 )
 def render_page_content(pathname):
     if pathname == "/":
-        return html.P("This is the content of the home page!")
-    elif pathname == "/page-1":
-        return html.P("This is the content of page 1. Yay!")
-    elif pathname == "/page-2":
-        return html.P("Oh cool, this is page 2!")
+        return home_page_layout
     elif pathname == "/pie-chart":
         return pie_layout
     elif pathname == "/area-line":
